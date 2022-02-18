@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,242 +78,65 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-</head>
-<body class="home">
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="social" >
-          <a class="twitter" href="https://twitter.com/RadicalFishGame" target="_blank"><span>Twitter</span></a>
-          <a class="facebook" href="http://www.facebook.com/RadicalFishGames" target="_blank" ><span>Facebook</span></a>
-          <a class="tumblr" href="http://radicalfishgames.tumblr.com" target="_blank" ><span>Tumblr</span></a>
-          <a class="indiedb" href="http://www.indiedb.com/games/crosscode" target="_blank" ><span>IndieDB</span></a>
-          <a class="youtube" href="http://www.youtube.com/radicalfishgames" target="_blank" ><span>Youtube</span></a>
-        </div>
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="#play">Play</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#download">Download</a></li>
-            <li><a href="http://crosscode.gamepedia.com/" target="_blank">Wiki</a></li>
-            <li><a href="http://forum.cross-code.com">Forum</a></li>
-            <li><a href="http://www.radicalfishgames.com">Blog</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="optional"><a href="http://www.radicalfishgames.com/presskit/sheet.php?p=crosscode" target="_blank">Presskit</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
+<script>
+      var IG_GAME_SCALE = 2;
+  var IG_GAME_CACHE = "";
+  var IG_KEEP_WINDOW_FOCUS = "";
+  var IG_ROOT = "../";
+  var IG_LANG = undefined;
+  var IG_WIDTH = 568;
+  var IG_HEIGHT = 320;
+  var IG_HIDE_DEBUG = false;
+  var IG_SCREEN_MODE_OVERRIDE = "";
+  var IG_WEB_AUDIO_BGM = false;
+  var IG_GAME_FPS = 60;
+  var IG_LVL = 0;
+  var IG_PLOT = 0;
+  var IG_PARTY = "";
+  var IG_IGNORE_OPTIONS = false;
+</script>
+<script>
+  var IG_GAME_BETA = true;
+</script>
+<script type="text/javascript" src="../js/game.compiled.js"></script><script type="text/javascript" src="../impact/page/js/options.js"></script>
+<script type="text/javascript" src="../page/js/browser.js"></script>
+<script type="text/javascript" src="../page/js/stacktrace.js"></script>
+<div id="options" class="toggleMenu" style="display: none">
+    <a class="trigger" ><span>Options</span></a>
+    <ul class="optionList"></ul>
+</div>
 
-      </div>
-    </nav>
+<div id="browserMessage" ></div>
 
+<div id="game" style="display:none">
+  <canvas id="canvas"></canvas>
+</div>
 
-    <section class="play" id="play" >
+<script type="text/javascript">
 
-        <div class="lea" id="lea"></div>
+    function doStartCrossCode(){
+      $("#game").show();
+      startCrossCode();
+    }
 
-        <div class="scanlines" ></div>
+    function crossCodeLoadCheck(){
+      if(window["IG_GAME_DEBUG"] && !window["IG_HIDE_DEBUG"])
+        $("#options").show();
+      if(window.startCrossCode && window.doBrowserCheck){
+        doBrowserCheck($("#browserMessage"), doStartCrossCode);
+      }
+      else{
+        window.setTimeout(crossCodeLoadCheck, 100);
+      }
+    }
 
-        <h1><span>CrossCode</span></h1>
-        <div class="container">
+    window.onload = crossCodeLoadCheck;
+</script>
 
-
-          <div class="blackbox video" >
-            <div ><iframe id="ytplayer" type="text/html"
-                src="https://www.youtube.com/embed/bzZ3gB9RcIc" frameborder="0" allowfullscreen ></iframe></div>
-          </div>
-
-          <div class="blackbox cta">
-              <div>
-                <p>Play the Demo</p>
-                <a href="http://store.steampowered.com/app/368340/" target="_blank" >Steam</a>
-                <a href="start" target="_blank" >Web Version</a>
-                <p>Get the Game</p>
-                <a href="http://store.steampowered.com/app/368340/" target="_blank" >Steam</a>
-                <a href="https://www.nintendo.com/games/detail/crosscode-switch/" target="_blank"  >Nintendo Switch</a>
-                <a href="https://store.playstation.com/en-us/product/UP0895-CUSA15452_00-CROSSCODEPLAYSTA" target="_blank"  >Playstation 4</a>
-                <a href="https://www.microsoft.com/de-de/p/crosscode/9n04rqq64524?rtc=1" target="_blank"  >Xbox One</a>
-              </div>
-          </div>
-
-        </div><!-- /.container -->
-        <!--
-        <div class="steamBox blackbox" >
-          <div>
-            <a href="http://store.steampowered.com/app/368340/" target="_blank" ><img src="..//page/img/banner-early-access.png" /></a>
-          </div>
-        </div>
-        -->
-
-    </section>
-    <section class="features" >
-        <span class="anchor" id="about" ></span>
-        <div class="container">
-            <div class="summary">
-                 <h2>A retro-inspired <b>2D Action RPG</b> set in the <b>distant future</b></h2>
-                <p class="summary" >
-                    Meet <b>Lea</b> as she logs into an <b>MMO of the distant future</b>.<br>
-                    Follow her steps as she discovers a vast world, meets other players and
-                    overcomes all the challenges of the game.
-                </p>
-                <p>
-                    Also: <b>Lea can't speak</b>. Nope, no heroic mime. She is <b>actually mute</b>.
-                </p>
-            </div>
-             <div class="featureList">
-                <div class="feature">
-                    <img src="..//page/img/feature-story.png" title="Such sci-fi computing."/>
-                    <p>A story about the distant future of gaming - from an unexpected angle. Plenty of characters and plot twists included.</p>
-                </div>
-                <div class="feature">
-                    <img src="..//page/img/feature-balls.png" title="A very roundabout way to hit a switch!"/>
-                    <p>Master the bouncing ball mechanics and solve a whole bunch of puzzles. </p>
-                </div>
-                <div class="feature">
-                    <img src="..//page/img/feature-combat-2.png" title="More damage numbers are better."/>
-                    <p>
-                        CrossCode has fast, action-packed combat filled with damage numbers.
-                        And we still managed to squeeze some strategy in there!
-                    </p>
-                </div>
-                <div class="feature">
-                    <img src="..//page/img/feature-elements.png" title="The Heat element also comes with big explosions."/>
-                    <p>
-                        Be a proper avatar and master all 4 elements: Cold, Heat, Shock and Wave.
-                        What, those are not the right elements? No idea what you are talking about.
-
-                    </p>
-                </div>
-                <div class="feature">
-                    <img src="..//page/img/feature-rpg.png" title="Gotta get this defense."/>
-                    <p>
-                        Being a proper RPG, CrossCode comes with tons of skills, equipment, items, NPCs,
-                        quests and all those fun little things consuming your precious time.
-                    </p>
-                </div>
-                <div class="feature">
-                    <img src="..//page/img/feature-awesome.png" title="Hit its weak point for massive damage!"/>
-                    <p>
-                        CrossCode is full of awesome: huge hostile cyborg crabs, a seaman with a jetpack and
-                        head-banging meerkats.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <section class="more" id="more" >
-         <div class="moreInner" >
-
-             <div class="characters" id="characters"></div>
-
-              <div class="blackbox download" >
-                <div>
-                    <span class="anchor" id="download" ></span>
-                    <h2>Download</h2>
-                    <p>You can also play the <b>CrossCode Demo</b> offline, outside of the Browser.</p>
-                    <a href="http://www.cross-code.com/release/crosscode-demo.zip" class="biggerButton" >CrossCode for Windows</a>
-                    <p>Linux and OSX demo available through <b>Steam</b></p>
-                </div>
-              </div>
-
-              <div class="blackbox support" >
-                <div>
-                  <span class="anchor" id="support" ></span>
-                  <h2>Support Us</h2>
-                  <p>You can <b>spread the word</b> and follow us on:</p>
-                  <div class="social" >
-                    <a class="twitter" href="https://twitter.com/RadicalFishGame" target="_blank"><span>Twitter</span></a>
-                    <a class="facebook" href="http://www.facebook.com/RadicalFishGames" target="_blank" ><span>Facebook</span></a>
-                    <a class="tumblr" href="http://radicalfishgames.tumblr.com" target="_blank" ><span>Tumblr</span></a>
-                    <a class="indiedb" href="http://www.indiedb.com/games/crosscode" target="_blank" ><span>IndieDB</span></a>
-                    <a class="youtube" href="http://www.youtube.com/radicalfishgames" target="_blank" ><span>Youtube</span></a>
-                  </div>
-                  <p>Or if you prefer E-Mail, subscribe to our <b>CrossCode News</b> mailinglist:</p>
-                  <!-- Begin MailChimp Signup Form -->
-                  <div id="mc_embed_signup">
-                  <form action="//radicalfishgames.us9.list-manage.com/subscribe/post?u=6990151f91beafabcd6d1da88&amp;id=d8b8c0320b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-                      <div id="mc_embed_signup_scroll">
-                        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-                        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-                        <div style="position: absolute; left: -5000px;"><input type="text" name="b_6990151f91beafabcd6d1da88_d8b8c0320b" tabindex="-1" value=""></div>
-                        <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-                      </div>
-                  </form>
-                  </div>
-
-                  <!--End mc_embed_signup-->
-
-                  <p>And of course <a href="http://www.radicalfishgames.com" >visit our blog</a></p>
-                </div>
-
-              </div>
-         </div>
-    </section>
-
-
-    <section class="contact" id="footer">
-        <div class="container" >
-            <span class="anchor" id="soundtrack" ></span>
-            <h2>Soundtrack</h2>
-            <iframe style="border: 0; width: 350px; height: 786px;" src="https://bandcamp.com/EmbeddedPlayer/album=789187561/size=large/bgcol=ffffff/linkcol=0687f5/transparent=true/" seamless><a href="http://interovgm.com/album/crosscode-original-game-soundtrack">CrossCode (Original Game Soundtrack) by Deniz Akbulut</a></iframe>
-            <span class="anchor" id="contact" ></span>
-            <h2>Contact</h2>
-            <p>Got feedback, bugs or just want to say hi? Send us a mail: <a href="mailto:feedback@radicalfishgames.com">feedback@radicalfishgames.com</a></p>
-
-            <div class="imprint">
-                <p>
-                  CrossCode.com © 2012 <a href="http://www.radicalfishgames.com" >Radical Fish Games</a>
-                  | <a href="http://www.radicalfishgames.com/presskit/sheet.php?p=crosscode" target="_blank">Presskit</a>
-                </p>
-
-                <p><b>Imprint</b><br>Radical Fish Games GmbH &middot; Halbergstr 4 &middot; 66121 Saarbrücken &middot; Germany</p>
-            </div>
-
-        </div>
-
-    </section>
-
-    <script>
-
-        var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-        if(!isMobile){
-            var bgScrollStart = -120, bgScrollFactor = 0.95,
-            leaScrollStart = 0, leaScrollFactor = 0.8,
-            moreScrollStart = 0, moreScrollFactor = 0.85,
-            charScrollFactor = 0.5;
-            function updateParallaxScroll(){
-                var scrollY = document.body.scrollTop || document.documentElement.scrollTop;
-                var bgValue = bgScrollStart + bgScrollFactor*scrollY;
-                $("#play")[0].style.backgroundPosition = "center " + bgValue + "px";
-                var leaValue = leaScrollStart + leaScrollFactor*scrollY;
-                $("#lea")[0].style.backgroundPosition = "center " + leaValue + "px";
-                var height = $(document).height();
-                moreScrollStart = -(height - $("#more").height() - $("#footer").height() - 150);
-                var moreValue = moreScrollStart + moreScrollFactor*scrollY;
-                $("#more")[0].style.backgroundPosition = "left " + moreValue + "px";
-                var charOffset = $("#footer").height() - 200;
-                var charValue = (document.body.scrollHeight - scrollY - window.innerHeight - charOffset)*charScrollFactor;
-                charValue = Math.max(0, charValue);
-                $("#characters")[0].style.backgroundPosition = "center " + charValue + "px";
-            }
-            updateParallaxScroll();
-            $(document).scroll(updateParallaxScroll);
-            $(window).resize(updateParallaxScroll);
-            $(updateParallaxScroll);
-        }
-
-    </script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="..//page/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+
 
